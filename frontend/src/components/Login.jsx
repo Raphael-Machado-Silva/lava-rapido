@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -11,27 +11,23 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:3001/login', { email, password });
+      const { data } = await axios.post('http://localhost:3001/login', { 
+        email, 
+        password 
+      });
       
-      // Redireciona conforme o tipo de usuário
-      switch(data.user.role) {
-        case 'ADMIN':
-          navigate('/admin');
-          break;
-        case 'FUNCIONARIO':
-          navigate('/funcionario');
-          break;
-        case 'CLIENTE':
-          navigate('/cliente');
-          break;
-        default:
-          navigate('/');
-      }
+      // 1. Atualiza o estado global do usuário
+      setUser(data.user);
       
-      // Salva o usuário no localStorage
+      // 2. Armazena no localStorage
       localStorage.setItem('user', JSON.stringify(data.user));
+      
+      // 3. Redireciona para a página correta
+      navigate(`/${data.user.role.toLowerCase()}`);
+      
     } catch (err) {
-      setError('Credenciais inválidas!');
+      setError('Email ou senha incorretos!');
+      console.error('Erro no login:', err);
     }
   };
 

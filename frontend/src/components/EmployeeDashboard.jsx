@@ -8,16 +8,19 @@ const EmployeeDashboard = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user || user.role !== 'FUNCIONARIO') navigate('/');
-    
+    if (!user || user.role !== 'FUNCIONARIO') {
+      navigate('/');
+      return;
+    }
+
     const loadTodayAppointments = () => {
       axios.get('http://localhost:3001/appointments/today')
         .then(res => setAppointments(res.data));
     };
-    
+
     loadTodayAppointments();
-    const interval = setInterval(loadTodayAppointments, 5000); // Atualiza a cada 5 segundos
-    
+    const interval = setInterval(loadTodayAppointments, 5000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -25,7 +28,7 @@ const EmployeeDashboard = () => {
     await axios.patch(`http://localhost:3001/appointments/${id}/status`, {
       status: 'CONCLUIDO'
     });
-    setAppointments(appointments.map(app => 
+    setAppointments(appointments.map(app =>
       app.id === id ? { ...app, status: 'CONCLUIDO' } : app
     ));
   };

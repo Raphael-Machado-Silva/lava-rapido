@@ -10,8 +10,11 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user || user.role !== 'ADMIN') navigate('/');
-    
+    if (!user || user.role !== 'ADMIN') {
+      navigate('/');
+      return;
+    }
+
     const loadData = async () => {
       const [appsRes, servicesRes] = await Promise.all([
         axios.get('http://localhost:3001/appointments'),
@@ -20,7 +23,7 @@ const AdminDashboard = () => {
       setAppointments(appsRes.data);
       setServices(servicesRes.data);
     };
-    
+
     loadData();
   }, []);
 
@@ -29,7 +32,7 @@ const AdminDashboard = () => {
     const res = await axios.post('http://localhost:3001/services', {
       name: newService.name,
       price: parseFloat(newService.price),
-      duration: 30 // Default duration
+      duration: 30
     });
     setServices([...services, res.data]);
     setNewService({ name: '', price: '' });
@@ -38,13 +41,13 @@ const AdminDashboard = () => {
   return (
     <div className="dashboard">
       <h2>Área do Administrador</h2>
-      
+
       <div className="services-management">
         <h3>Gerenciar Serviços</h3>
         <form onSubmit={handleAddService}>
           <input
             value={newService.name}
-            onChange={(e) => setNewService({...newService, name: e.target.value})}
+            onChange={(e) => setNewService({ ...newService, name: e.target.value })}
             placeholder="Nome do serviço"
             required
           />
@@ -52,13 +55,13 @@ const AdminDashboard = () => {
             type="number"
             step="0.01"
             value={newService.price}
-            onChange={(e) => setNewService({...newService, price: e.target.value})}
+            onChange={(e) => setNewService({ ...newService, price: e.target.value })}
             placeholder="Preço"
             required
           />
           <button type="submit">Adicionar Serviço</button>
         </form>
-        
+
         <ul>
           {services.map(service => (
             <li key={service.id}>

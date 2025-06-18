@@ -9,38 +9,33 @@ const ClientDashboard = () => {
   const [selectedService, setSelectedService] = useState('');
   const navigate = useNavigate();
 
-  // Verifica se está logado
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user || user.role !== 'CLIENTE') navigate('/');
-  }, []);
-
-  // Carrega dados
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      axios.get(`http://localhost:3001/appointments/user/${user.id}`)
-        .then(res => setAppointments(res.data));
-      
-      axios.get('http://localhost:3001/services')
-        .then(res => {
-          setServices(res.data);
-          if (res.data.length > 0) setSelectedService(res.data[0].id);
-        });
+    if (!user || user.role !== 'CLIENTE') {
+      navigate('/');
+      return;
     }
+
+    axios.get(`http://localhost:3001/appointments/user/${user.id}`)
+      .then(res => setAppointments(res.data));
+
+    axios.get('http://localhost:3001/services')
+      .then(res => {
+        setServices(res.data);
+        if (res.data.length > 0) setSelectedService(res.data[0].id);
+      });
   }, []);
 
   const handleSchedule = async (e) => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem('user'));
-    
+
     await axios.post('http://localhost:3001/appointments', {
       date,
       serviceId: selectedService,
       userId: user.id
     });
-    
-    // Atualiza a lista
+
     const res = await axios.get(`http://localhost:3001/appointments/user/${user.id}`);
     setAppointments(res.data);
     setDate('');
@@ -52,8 +47,8 @@ const ClientDashboard = () => {
       <div className="schedule-form">
         <h3>Agendar Lavagem</h3>
         <form onSubmit={handleSchedule}>
-          <select 
-            value={selectedService} 
+          <select
+            value={selectedService}
             onChange={(e) => setSelectedService(e.target.value)}
           >
             {services.map(service => (
