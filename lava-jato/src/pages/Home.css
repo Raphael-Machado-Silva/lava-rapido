@@ -11,7 +11,7 @@
 .hero {
     background: 
       linear-gradient(135deg,  rgba(9, 9, 22, 0.192), rgba(7, 39, 87, 0.336)),
-      url('../assets/home-img.jpg') center/cover no-repeat;
+      url('../assets/home-img.jpg') center/cover no-repeat !important;
     color: white;
     padding: 6rem 2rem; /* Aumentei o padding vertical */
     text-align: center;
@@ -21,11 +21,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 0;
   }
   
   .hero-content {
     position: relative;
-    z-index: 3; /* Garante que o conteúdo fique acima dos gradientes */
+    z-index: 4; /* Garante que o conteúdo fique acima dos gradientes */
     max-width: 900px;
     padding: 2rem;
     margin-top: 40px;
@@ -68,7 +69,7 @@
     letter-spacing: 0.03em;
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    z-index: 4;
     cursor: pointer;
     text-transform: uppercase;
     min-width: 220px;
@@ -146,7 +147,7 @@
         rgba(26, 115, 232, 0.2) 0%,
         transparent 60%
       );
-    z-index: 1;
+    z-index: -2;
     mix-blend-mode: overlay; /* Suaviza a sobreposição */
   }
 
@@ -174,7 +175,7 @@
         rgba(7, 39, 87, 0) 80%,
         rgba(36, 35, 87, 0.6) 100%
       );
-    z-index: 2;
+    z-index: -1;
   }
   
   /* Seção Features */

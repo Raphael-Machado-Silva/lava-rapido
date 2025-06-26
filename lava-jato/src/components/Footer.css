@@ -1,0 +1,194 @@
+.footer {
+    background: linear-gradient(135deg, #0d47a1, #072757);
+    color: white;
+    padding: 4rem 0rem 0;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    letter-spacing: 0.3px;
+  }
+  
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #1a73e8, #00bcd4, #1a73e8);
+    animation: gradientMove 4s linear infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% }
+    100% { background-position: 100% }
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.2rem;
+    max-width: 1700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .footer-section {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  
+  .footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #00bcd4;
+    border-radius: 10px;
+  }
+  
+  .footer-section p {
+    margin-bottom: 0.7rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.96rem;
+  }
+  
+  /* Rodapé inferior */
+  .footer-bottom {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(0, 0, 0, 0.15);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+/* Seção de Redes Sociais - Versão Premium */
+.footer-section.social-section {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .footer-socials {
+    display: flex;
+    justify-content: first baseline;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+  }
+  
+  .footer-socials a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-socials a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+  }
+  
+  .footer-socials a:hover::before {
+    transform: translateY(0);
+  }
+  
+  /* Cores específicas para cada rede social */
+  .footer-socials a[aria-label="Facebook"]:hover {
+    background: #1877f2;
+    color: white;
+  }
+  
+  .footer-socials a[aria-label="Instagram"]:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+  }
+  
+  .footer-socials a[aria-label="Whatsapp"]:hover {
+    background: #25d366;
+    color: white;
+  }
+  
+  /* Ícones com efeito de flutuação */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .footer-socials a i {
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-socials a:hover i {
+    transform: scale(1.2);
+    animation: float 1.5s ease-in-out infinite;
+  }
+  
+  
+  
+  /* Efeitos de onda opcional (remova se não quiser) */
+  .footer::after {
+    content: '';
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%2300bcd4'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%231a73e8' opacity='.5'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-section h3::after {
+      width: 40px;
+    }
+  }
