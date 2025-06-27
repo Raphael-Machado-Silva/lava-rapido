@@ -342,7 +342,8 @@
   }
   
   /* Tablet (992px para baixo) - PONTO DE QUEBRA PRINCIPAL */
-  @media (max-width: 992px) {
+ /* Tablet (992px para baixo) - PONTO DE QUEBRA PRINCIPAL */
+@media (max-width: 992px) {
     .about-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
@@ -356,10 +357,15 @@
     
     .about-content {
       padding: 0 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     
     .features-container {
       grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
     }
     
     .carousel-button {
@@ -371,8 +377,30 @@
       width: 10px;
       height: 10px;
     }
+    
+    .cta-button {
+      margin: 30px auto 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   
+  /* Tablet Pequeno (768px para baixo) */
+  @media (max-width: 768px) {
+    /* ... (outras regras existentes) ... */
+    
+    .features-container {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .cta-button {
+      width: 80%;
+      max-width: 280px;
+    }
+  }
   /* Tablet Pequeno (768px para baixo) */
   @media (max-width: 768px) {
     .about-hero {
