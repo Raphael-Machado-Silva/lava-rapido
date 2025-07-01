@@ -1,26 +1,86 @@
-const Services = () => {
-    const services = [
-      { name: 'Lavagem Simples', price: 'R$ 30,00', description: 'Lavagem externa com shampoo automotivo' },
-      { name: 'Lavagem Completa', price: 'R$ 60,00', description: 'Lavagem interna e externa com aspirador' },
-      { name: 'Lavagem Premium', price: 'R$ 90,00', description: 'Lavagem completa + cera + limpeza de vidros' },
-      { name: 'Polimento', price: 'R$ 120,00', description: 'Remoção de riscos leves e recuperação da pintura' },
-      { name: 'Higienização Interna', price: 'R$ 80,00', description: 'Limpeza profunda de bancos e carpetes' },
-    ]
-  
-    return (
-      <div className="services-page">
-        <h2>Nossos Serviços e Preços</h2>
-        <div className="services-list">
-          {services.map((service, index) => (
-            <div key={index} className="service-card">
-              <h3>{service.name}</h3>
-              <p className="price">{service.price}</p>
-              <p className="description">{service.description}</p>
+import React from 'react';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import './Contact.css';
+
+const Contact = () => {
+  return (
+    <section className="contact-section">
+      <div className="contact-container">
+        <div className="contact-content">
+          <div className="contact-header">
+            <h1 className="contact-title">Entre em Contato</h1>
+            <p className="contact-subtitle">Estamos prontos para atender você da melhor forma possível</p>
+          </div>
+
+          <div className="contact-grid">
+            <div className="contact-info">
+              <div className="info-card">
+                <div className="info-icon">
+                  <FaMapMarkerAlt />
+                </div>
+                <h3>Endereço</h3>
+                <p>Rua do Lava Jato, 123<br />Bairro Brilhante<br />Cidade Limpa - SP</p>
+              </div>
+
+              <div className="info-card">
+                <div className="info-icon">
+                  <FaPhone />
+                </div>
+                <h3>Telefone</h3>
+                <p>(11) 98765-4321<br />(11) 3456-7890</p>
+              </div>
+
+              <div className="info-card">
+                <div className="info-icon">
+                  <FaEnvelope />
+                </div>
+                <h3>Email</h3>
+                <p>contato@lavajatoexpress.com<br />sac@lavajatoexpress.com</p>
+              </div>
+
+              <div className="info-card">
+                <div className="info-icon">
+                  <FaClock />
+                </div>
+                <h3>Funcionamento</h3>
+                <p>Segunda a Sexta: 8h às 18h<br />Sábado: 8h às 13h</p>
+              </div>
             </div>
-          ))}
+
+            <div className="contact-form-container">
+              <form className="contact-form">
+                <h2 className="form-title">Envie sua Mensagem</h2>
+                
+                <div className="form-group">
+                  <input type="text" id="name" placeholder=" " required />
+                  <label htmlFor="name">Seu Nome</label>
+                </div>
+                
+                <div className="form-group">
+                  <input type="email" id="email" placeholder=" " required />
+                  <label htmlFor="email">Seu Email</label>
+                </div>
+                
+                <div className="form-group">
+                  <input type="tel" id="phone" placeholder=" " />
+                  <label htmlFor="phone">Telefone (Opcional)</label>
+                </div>
+                
+                <div className="form-group">
+                  <textarea id="message" rows="5" placeholder=" " required></textarea>
+                  <label htmlFor="message">Sua Mensagem</label>
+                </div>
+                
+                <button type="submit" className="submit-button">
+                  Enviar Mensagem
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    )
-  }
-  
-  export default Services
+    </section>
+  );
+};
+
+export default Contact;
