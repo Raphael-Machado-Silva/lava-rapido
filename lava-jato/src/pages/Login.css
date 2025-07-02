@@ -84,8 +84,8 @@
   /* Animação dos Labels */
   .input-label {
     position: absolute;
-    left: 3rem;
-    top: 1rem;
+    left: 1.6rem;
+    top: 0.8rem;
     color: var(--black);
     opacity: 0.7;
     pointer-events: none;
@@ -123,18 +123,20 @@
     width: 100%;
     transition: var(--transition);
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
   
   .auth-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
   }
-
-  .button-icon{
-    font-size: 20px;
-    margin-left: 20px;
-    display: none;
+  
+  .button-icon {
+    font-size: 1rem;
   }
   
   .error-message {
@@ -142,6 +144,7 @@
     font-size: 0.9rem;
     margin-top: -1rem;
     margin-bottom: 1rem;
+    text-align: center;
   }
   
   /* Cabeçalho e Rodapé */
@@ -188,5 +191,9 @@
     
     .auth-title {
       font-size: 1.3rem;
+    }
+    
+    .auth-button {
+      padding: 1rem;
     }
   }

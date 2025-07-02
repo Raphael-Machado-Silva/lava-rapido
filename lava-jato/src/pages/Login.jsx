@@ -42,6 +42,7 @@ const Login = ({ onLogin }) => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder=" "
               required
             />
             <label htmlFor="username" className="input-label">
@@ -56,6 +57,7 @@ const Login = ({ onLogin }) => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder=" "
               required
             />
             <label htmlFor="password" className="input-label">
