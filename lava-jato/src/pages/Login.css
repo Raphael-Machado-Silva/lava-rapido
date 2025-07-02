@@ -1,58 +1,152 @@
-/* Variáveis de cores */
+/* Variáveis de cores - Tema Azul e Branco */
 :root {
     --primary-blue: #3b82f6;
     --dark-blue: #1d4ed8;
     --light-blue: #93c5fd;
     --white: #ffffff;
+    --off-white: #f9fafb;
     --black: #1f2937;
-    --gray-light: #f9fafb;
-    --gray-medium: #e5e7eb;
+    --gray-light: #e5e7eb;
     --error-color: #ef4444;
     --transition: all 0.3s ease;
   }
   
-  /* Reset e estilos base */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
+  /* Estrutura Base */
   .auth-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f0f4f8 0%, #dfe7ef 100%);
     padding: 2rem;
-  }
-  
-  .auth-card {
-    width: 100%;
-    max-width: 420px;
-    background-color: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
-    text-align: center;
     position: relative;
     overflow: hidden;
+    background-color: var(--off-white);
   }
   
-  .auth-card::before {
-    content: '';
+  /* Efeito de Divisor Angular Azul */
+  .auth-divider {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+    left: 50%;
+    width: 150%;
+    height: 110%;
+    background: linear-gradient(
+      to right bottom,
+      var(--white) 0%,
+      var(--white) 50%,
+      var(--light-blue) 50%,
+      var(--light-blue) 100%
+    );
+    transform: translateX(-50%) rotate(-5deg);
+    z-index: 0;
+    opacity: 0.8;
   }
   
-  .auth-brand {
+  /* Card de Login */
+  .auth-card {
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--gray-light);
+  }
+  
+  /* Estilo do Formulário */
+  .auth-form {
+    margin-top: 2rem;
+  }
+  
+  .input-field {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-field input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--off-white);
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  /* Animação dos Labels */
+  .input-label {
+    position: absolute;
+    left: 3rem;
+    top: 1rem;
+    color: var(--black);
+    opacity: 0.7;
+    pointer-events: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+  }
+  
+  .label-icon {
+    color: var(--primary-blue);
+    font-size: 1rem;
+  }
+  
+  .input-field input:focus + .input-label,
+  .input-field input:not(:placeholder-shown) + .input-label {
+    top: -0.8rem;
+    left: 1rem;
+    font-size: 0.8rem;
+    background: var(--white);
+    padding: 0 0.5rem;
+    color: var(--primary-blue);
+    opacity: 1;
+  }
+  
+  /* Botão e Demais Elementos */
+  .auth-button {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+    border: none;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 1rem;
+    width: 100%;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+  }
+
+  .button-icon{
+    font-size: 20px;
+    margin-left: 20px;
+    display: none;
+  }
+  
+  .error-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Cabeçalho e Rodapé */
+  .auth-brand {
+    text-align: center;
     margin-bottom: 1.5rem;
   }
   
@@ -62,87 +156,22 @@
     margin-bottom: 0.5rem;
   }
   
-  .auth-brand h1 {
-    font-size: 1.5rem;
-    color: var(--black);
-    font-weight: 600;
-  }
-  
   .auth-title {
     font-size: 1.5rem;
     color: var(--black);
-    margin-bottom: 2rem;
-    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-align: center;
   }
   
-  .auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .input-field {
-    position: relative;
-  }
-  
-  .input-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary-blue);
-    font-size: 1rem;
-  }
-  
-  .input-field input {
-    width: 100%;
-    padding: 0.8rem 1rem 0.8rem 2.5rem;
-    border: 1px solid var(--gray-medium);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: var(--transition);
-  }
-  
-  .input-field input:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  }
-  
-  .error-message {
-    color: var(--error-color);
+  .auth-subtitle {
+    color: var(--black);
+    opacity: 0.7;
     font-size: 0.9rem;
-    margin-top: -0.5rem;
-  }
-  
-  .auth-button {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-    color: var(--white);
-    border: none;
-    padding: 1rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .auth-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-  }
-  
-  .button-icon {
-    font-size: 1rem;
   }
   
   .auth-footer {
     margin-top: 2rem;
+    text-align: center;
   }
   
   .auth-hint {
@@ -155,10 +184,6 @@
   @media (max-width: 480px) {
     .auth-card {
       padding: 2rem 1.5rem;
-    }
-    
-    .auth-brand h1 {
-      font-size: 1.3rem;
     }
     
     .auth-title {

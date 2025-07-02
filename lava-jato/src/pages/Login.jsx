@@ -25,6 +25,8 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="auth-container">
+      <div className="auth-divider"></div>
+      
       <div className="auth-card">
         <div className="auth-brand">
           <FaCar className="auth-logo" />
@@ -35,32 +37,38 @@ const Login = ({ onLogin }) => {
         
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="input-field">
-            <FaUser className="input-icon" />
             <input
               type="text"
+              id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Usuário"
               required
             />
+            <label htmlFor="username" className="input-label">
+              <FaUser className="label-icon" />
+              <span>Usuário</span>
+            </label>
           </div>
           
           <div className="input-field">
-            <FaLock className="input-icon" />
             <input
               type="password"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Senha"
               required
             />
+            <label htmlFor="password" className="input-label">
+              <FaLock className="label-icon" />
+              <span>Senha</span>
+            </label>
           </div>
           
           {error && <p className="error-message">{error}</p>}
           
           <button type="submit" className="auth-button">
-            <FaSignInAlt className="button-icon" />
             Entrar
+            <FaSignInAlt className="button-icon" />
           </button>
         </form>
         

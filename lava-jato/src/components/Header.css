@@ -239,7 +239,7 @@
   .mobile-nav-links a:hover,
   .mobile-nav-links .logout-btn:hover {
     color: var(--primary-blue);
-    background-color: var(--light-blue);
+    background-color:transparent;
   }
   
   .mobile-nav-links a::after,
