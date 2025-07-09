@@ -6,7 +6,7 @@ import { AppointmentsProvider } from './context/AppointmentsContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/lava-rapido">
       <AppointmentsProvider>
         <App />
       </AppointmentsProvider>
