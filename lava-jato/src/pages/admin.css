@@ -1,0 +1,232 @@
+/* Admin.css */
+
+.admin-dashboard {
+    max-width: 1200px;
+    margin: 10% auto;
+    padding: 2rem;
+    background-color: var(--off-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    margin-top: 10% !important;
+  }
+  
+  .dashboard-title {
+    color: var(--dark-blue);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--light-blue);
+    padding-bottom: 0.5rem;
+  }
+  
+  .filters {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .filter-label {
+    font-weight: 500;
+    color: var(--black);
+    white-space: nowrap;
+  }
+  
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .date-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-medium);
+    border-radius: 6px;
+    font-family: inherit;
+    color: var(--black);
+    transition: var(--transition);
+  }
+  
+  .date-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  .clear-filter-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+  }
+  
+  .clear-filter-btn:hover {
+    background-color: var(--gray-medium);
+  }
+  
+  .no-appointments {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray-dark);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+  
+  .appointments-table thead {
+    background-color: var(--primary-blue);
+    color: var(--white);
+  }
+  
+  .appointments-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .appointments-table tbody tr {
+    border-bottom: 1px solid var(--gray-light);
+    transition: var(--transition);
+  }
+  
+  .appointments-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  .appointments-table tbody tr:hover {
+    background-color: var(--off-white);
+  }
+  
+  .appointments-table td {
+    padding: 1rem;
+    color: var(--black);
+    vertical-align: top;
+  }
+  
+  .delete-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--error-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .delete-btn:hover {
+    background-color: #dc2626;
+  }
+  
+
+ /* Admin.css */
+
+/* ... (mantenha todo o CSS existente acima) ... */
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .admin-dashboard {
+      padding: 1rem;
+      margin-top: 25% !important;
+    }
+    
+    .filter-group {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .dashboard-title {
+      font-size: 1.5rem;
+    }
+  
+    /* Transformação da tabela em cards */
+    .appointments-table {
+      min-width: 100%;
+      display: block;
+    }
+  
+    .appointments-table thead {
+      display: none;
+    }
+  
+    .appointments-table tbody,
+    .appointments-table tr,
+    .appointments-table td {
+      display: block;
+      width: 100%;
+    }
+  
+    .appointments-table tr {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+  
+    .appointments-table td {
+      padding: 0.5rem 0;
+      border: none;
+    }
+  
+    .appointments-table td:before {
+      content: attr(data-label);
+      font-weight: 600;
+      color: var(--dark-blue);
+      display: inline-block;
+      width: 120px;
+      margin-right: 0.5rem;
+    }
+  
+    .appointments-table td[data-label="Ações"] {
+      text-align: right;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-light);
+      margin-top: 0.5rem;
+    }
+  
+    .appointments-table td[data-label="Ações"]:before {
+      display: none;
+    }
+  
+    /* Adicionando labels dinâmicos */
+    .appointments-table td:nth-of-type(1):before { content: "Data: "; }
+    .appointments-table td:nth-of-type(2):before { content: "Horário: "; }
+    .appointments-table td:nth-of-type(3):before { content: "Cliente: "; }
+    .appointments-table td:nth-of-type(4):before { content: "Veículo: "; }
+    .appointments-table td:nth-of-type(5):before { content: "Serviço: "; }
+    .appointments-table td:nth-of-type(6):before { content: "Valor: "; }
+    .appointments-table td:nth-of-type(7):before { content: "Contato: "; }
+  }

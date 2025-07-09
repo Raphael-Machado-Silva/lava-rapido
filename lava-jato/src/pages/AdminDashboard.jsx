@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { useAppointments } from '../context/AppointmentsContext'
+import './admin.css'
 
 const AdminDashboard = () => {
   const { appointments, removeAppointment } = useAppointments()
@@ -18,7 +19,6 @@ const AdminDashboard = () => {
 
       <div className="filters">
         <div className="form-group">
-          <label>Filtrar por data:</label>
           <input
             type="date"
             value={filterDate}
@@ -52,25 +52,23 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredAppointments.map(app => (
-              <tr key={app.id}>
-                <td>{format(new Date(app.date), 'PPP', { locale: ptBR })}</td>
-                <td>{app.time}</td>
-                <td>{app.clientName}</td>
-                <td>{app.brand} {app.model} ({app.year})</td>
-                <td>{app.service || '—'}</td>
-                <td>{app.price ? `R$ ${app.price}` : '—'}</td>
-                <td>{app.phone}</td>
-                <td>
-                  <button
-                    onClick={() => removeAppointment(app.id)}
-                    className="delete-btn"
-                  >
-                    Excluir
-                  </button>
-                </td>
-              </tr>
-            ))}
+      
+          {filteredAppointments.map(app => (
+            <tr key={app.id}>
+              <td data-label="Data">{format(new Date(app.date), 'PPP', { locale: ptBR })}</td>
+              <td data-label="Horário">{app.time}</td>
+              <td data-label="Cliente">{app.clientName}</td>
+              <td data-label="Veículo">{app.brand} {app.model} ({app.year})</td>
+              <td data-label="Serviço">{app.service || '—'}</td>
+              <td data-label="Valor">{app.price ? `R$ ${app.price}` : '—'}</td>
+              <td data-label="Contato">{app.phone}</td>
+              <td data-label="Ações">
+                <button onClick={() => removeAppointment(app.id)} className="delete-btn">
+                  Excluir
+                </button>
+              </td>
+            </tr>
+          ))}
           </tbody>
         </table>
       )}

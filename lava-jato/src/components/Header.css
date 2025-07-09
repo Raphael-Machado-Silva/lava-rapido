@@ -269,114 +269,131 @@
     background-color: var(--dark-blue) !important;
   }
   
-  /* Responsive Design */
-  @media (max-width: 992px) {
-    .nav-links {
-      gap: 1.5rem;
-    }
+ /* Responsive Design */
+
+/* Menu hambúrguer aparece a partir de 1250px */
+@media (max-width: 1250px) {
+  .mobile-menu-button {
+    display: block;
   }
-  
-  @media (max-width: 768px) {
-    .header-container {
-      padding: 1rem;
-    }
-  
-    .mobile-menu-button {
-      display: block;
-    }
-  
-    .desktop-nav, .nav-actions {
-      display: none;
-    }
-  
-    .logo-container h1 {
-      font-size: 1.3rem;
-    }
+
+  .desktop-nav, .nav-actions {
+    display: none;
   }
-  
-  @media (min-width: 769px) {
-    .mobile-nav {
-      display: none;
-    }
+
+  /* Ajuste opcional para o logo quando o menu hambúrguer aparece */
+  .logo-container h1 {
+    font-size: 1.4rem;
   }
-  
-  /* Animation for mobile menu */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+/* Ajustes para telas menores que 992px (mantido) */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 1.5rem;
   }
-  
-  .mobile-nav-links li {
-    animation: fadeIn 0.3s ease forwards;
-    opacity: 0;
+}
+
+/* Ajustes para telas menores que 768px (mantido com pequenos ajustes) */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem;
+  }
+
+  .logo-container h1 {
+    font-size: 1.3rem;
+  }
+
+  /* Ajustes específicos para mobile */
+  .mobile-nav {
     width: 100%;
-    text-align: center;
+    left: 0;
   }
-  
-  .mobile-nav-links li:nth-child(1) {
-    animation-delay: 0.1s;
+}
+
+/* Garante que o menu mobile fica escondido em telas maiores */
+@media (min-width: 1251px) {
+  .mobile-nav {
+    display: none;
   }
-  .mobile-nav-links li:nth-child(2) {
-    animation-delay: 0.2s;
+}
+
+/* Animation for mobile menu (mantido) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  .mobile-nav-links li:nth-child(3) {
-    animation-delay: 0.3s;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .mobile-nav-links li:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-  .mobile-nav-links li:nth-child(5) {
-    animation-delay: 0.5s;
-  }
-  .mobile-nav-links li:nth-child(6) {
-    animation-delay: 0.6s;
-  }
-  
-  /* Ajustes específicos para o botão de login no mobile */
-  .mobile-nav-links .login-btn {
-    background-color: var(--primary-blue) !important;
-    color: var(--white) !important;
-    padding: 0.75rem 1.5rem !important; /* Padding padrão para mobile */
-    min-width: auto !important; /* Remove a largura mínima */
-    justify-content: center !important;
-  }
-  
-  /* Remove a seta no mobile */
-  .mobile-nav-links .login-btn::before {
+}
+
+.mobile-nav-links li {
+  animation: fadeIn 0.3s ease forwards;
+  opacity: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-nav-links li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.mobile-nav-links li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.mobile-nav-links li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.mobile-nav-links li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.mobile-nav-links li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.mobile-nav-links li:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Ajustes específicos para o botão de login no mobile (mantido) */
+.mobile-nav-links .login-btn {
+  background-color: var(--primary-blue) !important;
+  color: var(--white) !important;
+  padding: 0.75rem 1.5rem !important;
+  min-width: auto !important;
+  justify-content: center !important;
+}
+
+/* Remove a seta no mobile */
+.mobile-nav-links .login-btn::before {
+  display: none !important;
+}
+
+/* Remove o efeito hover específico no mobile */
+.mobile-nav-links .login-btn:hover {
+  background-color: var(--primary-blue) !important;
+  transform: none !important;
+  padding-right: 1.5rem !important;
+}
+
+/* Mantém o hover básico */
+.mobile-nav-links .login-btn:hover {
+  opacity: 0.9;
+}
+
+/* Garante que prevaleça em telas menores */
+@media (max-width: 1250px) {
+  .login-btn::before {
     display: none !important;
   }
-  
-  /* Remove o efeito hover específico no mobile */
-  .mobile-nav-links .login-btn:hover {
-    background-color: var(--primary-blue) !important;
-    transform: none !important;
-    padding-right: 1.5rem !important; /* Mantém o padding padrão */
+
+  .login-btn:hover::before {
+    display: none !important;
   }
-  
-  /* Mantém o hover básico (opcional) */
-  .mobile-nav-links .login-btn:hover {
-    opacity: 0.9; /* Efeito sutil de hover */
+
+  .login-btn {
+    padding: 0.75rem 1.5rem !important;
+    min-width: auto !important;
   }
-  
-  /* Adicione esta media query no final para garantir que prevaleça */
-  @media (max-width: 768px) {
-    .login-btn::before {
-      display: none !important; /* Garante que a seta não apareça no mobile */
-    }
-  
-    .login-btn:hover::before {
-      display: none !important;
-    }
-  
-    .login-btn {
-      padding: 0.75rem 1.5rem !important; /* Padding simplificado para mobile */
-      min-width: auto !important;
-    }
-  }
-  
+}
